@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Hash.cpp" />
     <ClCompile Include="PerfectHash.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Hash.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
