@@ -20,10 +20,8 @@ int main()
 {
 	std::vector<std::string> v;
 
-    v.push_back("Stas");
-    v.push_back("Nataly");
-    v.push_back("Andrii");
-    v.push_back("artem");
+    for (int i = 0; i < 10; i++)
+        v.push_back(gen_random(10));
 
 	Hash h = Hash::Hash(v);
 
