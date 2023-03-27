@@ -17,6 +17,7 @@ private:
 		static long long EncodeString(std::string st, int p);
 		static int HashFunction(std::string, int a, int b, int p, int m);
 		void Insert(std::vector<std::string> list);
+		bool Check(std::string st);
 
 	private:
 		int a_prime;
@@ -39,8 +40,8 @@ private:
 	void Mapping(std::vector<std::string> v);
 
 public:
-	Hash(std::string* arr);
 	Hash(std::vector<std::string> arr);
+	bool Find(std::string st);
 	~Hash();
 };
 

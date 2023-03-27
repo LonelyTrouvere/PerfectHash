@@ -24,6 +24,4 @@ int main()
         v.push_back(gen_random(10));
 
 	Hash h = Hash::Hash(v);
-
-	system("pause");
 }

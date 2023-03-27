@@ -49,7 +49,6 @@ void Hash::HashRow::NewCode()
 void Hash::HashRow::Insert(std::vector<std::string> list)
 {
 	if (list.size() == 0) {
-		std::cout << "This list is empty" << '\n' << '\n';
 		return;
 	}
 
@@ -57,7 +56,6 @@ void Hash::HashRow::Insert(std::vector<std::string> list)
 
 	while (!collisions)
 	{
-		std::cout << a_prime << ' ' << b_prime << '\n';
 		h2.assign(h2.size(), "");
 
 		for (int i = 0; i < list.size(); i++)
@@ -66,11 +64,9 @@ void Hash::HashRow::Insert(std::vector<std::string> list)
 			if (h2[hash] == "")
 			{
 				h2[hash] = list[i];
-				std::cout << i << ". " << list[i] << "with hash " << hash << '\n';
 			}
 			else
 			{
-				std::cout << i << ". Collision occured, new iterration" << '\n';
 				NewCode();
 				collisions = true;
 				break;
@@ -79,15 +75,15 @@ void Hash::HashRow::Insert(std::vector<std::string> list)
 
 		collisions = !collisions;
 	}
-	std::cout << '\n' << '\n';
 }
 
-Hash::Hash(std::string* arr)
+bool Hash::HashRow::Check(std::string st)
 {
-	size = sizeof(arr) / sizeof(arr[0]);
-	p_prime = 31;
-	a_prime = rand() % p_prime + 10;
-	b_prime = rand() % (p_prime - 1) + 11;
+	int hash = HashFunction(st, a_prime, b_prime, p_prime, h2.size());
+
+	if (h2[hash] == st) return true;
+	else
+		return false;
 }
 
 Hash::Hash(std::vector<std::string> arr)
@@ -117,4 +113,13 @@ void Hash::Mapping(std::vector<std::string> v)
 
 	for (int i = 0; i < h1.size(); i++)
 		h1[i].Insert(rowPointer[i]);
+}
+
+bool Hash::Find(std::string st)
+{
+	int hash = Hash::HashRow::HashFunction(st, a_prime, b_prime, p_prime, size);
+	if (h1[hash].Check(st)) return true;
+	else
+		return false;
+
 }
